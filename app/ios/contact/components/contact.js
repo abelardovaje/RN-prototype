@@ -44,7 +44,7 @@ class Contact extends Component{
         return(
            
             <ScrollView style={styles.container}>
-                 {/* <FlatList
+                 <FlatList
                         style={styles.list}
                         data={this.state.users}
                         keyExtractor={(item,index)=>item.id}
@@ -54,7 +54,7 @@ class Contact extends Component{
                              subtitle={item.email}title={item.name}
                              style={styles.listItem}/>
                         }
-                    />        */}
+                    />       
                                           
             </ScrollView>
            
