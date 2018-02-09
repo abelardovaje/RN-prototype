@@ -21,12 +21,12 @@ export default class Login extends Component{
                 <View style={styles.logoContainer}>
                     <Image 
                         style={styles.logo}
-                        source={require('../images/Octocat.png')}/>
+                        source={require('../../images/Octocat.png')}/>
                         <Text style={styles.title}>GitHub Login</Text>
                 </View>
-                <View>
+                
                 <LoginForm login={this.handleLogin}/>
-                </View>
+                
                 
            </View>
         )
