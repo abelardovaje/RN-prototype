@@ -1,42 +1,33 @@
 import React, {Component} from 'react';
 // import Icon from 'react-native-vector-icons/Ionicons';
 import {View,Text, FlatList, ScrollView, StyleSheet} from 'react-native';
-import { ListItem, Button, Icon } from 'react-native-elements';
-
+import { List, ListItem, Button, Icon, SearchBar } from 'react-native-elements';
+import axios from 'axios';
 class Contact extends Component{
-    static navigationOptions = {
-        headerTitle:'Instagram',
-        headerRight:(
-            <Icon name='ios-send-outline'
-            size={30}
-            type='ionicon' iconStyle={
-                {color:'white',marginRight:10}
-            } />
-        ),
-        headerLeft:(
-            <Icon name='ios-camera-outline'
-            size={30}
-            type='ionicon' iconStyle={
-                {color:'white',marginLeft:10}
-            } />
-        )
-    }
+
     constructor(){
         super();
         this.state = {
-            users:[
-                {
-                    id:1,
-                    name:'user1',
-                    email:'user1@gmail.com'
-                },
-                {
-                    id:2,
-                    name:'user2',
-                    email:'user2@gmail.com'
-                },
-            ]
+            users:[]
+                 
         }
+    }
+
+    componentDidMount(){
+       
+        let _self = this;
+        axios.get('https://randomuser.me/api/?results=20').then((res)=>{
+            console.log('hello');
+            _self.setState({
+               users:res.data.results
+           });
+        });
+    }
+
+    renderListHeader(){
+        return (
+            <SearchBar placeholder="Type here..." darkTheme round/>
+        );
     }
 
     render(){
@@ -47,15 +38,20 @@ class Contact extends Component{
                  <FlatList
                         style={styles.list}
                         data={this.state.users}
-                        keyExtractor={(item,index)=>item.id}
+                        keyExtractor={(item,index)=>item.email}
+                        ListHeaderComponent={this.renderListHeader}
                         renderItem={({item})=>
                              <ListItem 
+                             underlayColor='#37393e'
+                             roundAvatar
+                             containerStyle={{borderBottomWidth:0}}
                              onPress={()=>navigate('UserDetails',item)}
-                             subtitle={item.email}title={item.name}
+                             avatar={item.picture.large}
+                             subtitle={item.email}
+                             title={`${item.name.first + " " + item.name.last}`}
                              style={styles.listItem}/>
                         }
-                    />       
-                                          
+                    />                                              
             </ScrollView>
            
         );

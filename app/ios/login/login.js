@@ -17,7 +17,7 @@ export default class Login extends Component{
         
         return(
            <View style={styles.container}>
-           <StatusBar  barStyle='dark-content'/>                      
+           <StatusBar  barStyle='light-content'/>                      
                 <View style={styles.logoContainer}>
                     <Image 
                         style={styles.logo}

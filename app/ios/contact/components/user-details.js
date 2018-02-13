@@ -5,9 +5,12 @@ class UserDetails extends React.Component{
     
         return (
             <View style={styles.container}>
-              <Button title="Update title" onPress={()=>{
-                  this.props.navigation.setParams({name:'hello'})
-              }}/>
+
+                    <View style={styles.profile}>
+                        <View style={{flex:2,borderColor:'white',borderWidth:1,height:'100%'}}></View>
+                        <View style={{flex:5,borderColor:'white',borderWidth:1,height:'100%'}}></View>
+                    </View>
+
             </View>
         )
     }
@@ -19,24 +22,14 @@ const styles = StyleSheet.create({
         backgroundColor:'#202225',
         flexDirection:'column'
     },
-    boxContainer:{
-        flex:1,
-        alignItems:'center',
-        justifyContent:'center'
+    profile:{
+        height:100,
+        borderBottomWidth:1,
+        borderColor:'whitesmoke',
+        padding:3,
+        flexDirection:'row'
+        // backgroundColor:'red'
     },
-    box1:{
-        flex:3,
-        backgroundColor:'red'
-    },
-    box2:{
-        backgroundColor:'green'
-    },
-    box3:{
-        flex:2,
-        flexDirection:'row',
-        alignItems:'flex-end',
-        backgroundColor:'blue'
-    }
 
 })
 
